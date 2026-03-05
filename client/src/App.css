@@ -1,42 +1,349 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* Home */
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.home h1 {
+  margin-bottom: 0.5rem;
 }
 
-@keyframes logo-spin {
+.home p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #333;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #555;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-user {
+  margin-right: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background: #666;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #444;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.btn-outline:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* Login */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form .form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.remember-me {
+  margin-top: -0.25rem;
+}
+
+.login-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.login-footer a {
+  color: #333;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.login-footer a:hover {
+  color: #555;
+}
+
+/* Signup */
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+  position: relative;
+}
+
+.signup-success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  animation: signupOverlayIn 0.2s ease-out;
+}
+
+@keyframes signupOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.signup-success-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background: #333;
+  color: #fff;
+  padding: 1.25rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: signupAlertIn 0.25s ease-out;
+}
+
+.signup-success-alert p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@keyframes signupAlertIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.signup-card {
+  width: 100%;
+  max-width: 420px;
 }
 
-.card {
-  padding: 2em;
+.signup-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.25rem;
 }
 
-.read-the-docs {
+.signup-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.input-wrap:focus-within {
+  border-color: #333;
+  outline: none;
+}
+
+.input-icon {
+  padding: 0 0.75rem;
+  font-size: 1rem;
   color: #888;
+  flex-shrink: 0;
+}
+
+.input-wrap input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 0.5rem 0.75rem 0;
+  font-size: 1rem;
+  background: transparent;
+  min-width: 0;
+}
+
+.input-wrap input::placeholder {
+  color: #aaa;
+}
+
+.input-wrap input:focus {
+  outline: none;
+}
+
+.input-toggle {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #666;
+}
+
+.input-hint {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.agreement {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #333;
+  cursor: pointer;
+}
+
+.checkbox-row span {
+  flex: 1;
+}
+
+.link-view {
+  color: #666;
+  text-decoration: underline;
+  font-size: 0.8rem;
+}
+
+.link-view:hover {
+  color: #333;
+}
+
+.agree-all {
+  font-weight: 600;
+}
+
+.form-error {
+  font-size: 0.875rem;
+  color: #c00;
+  margin: 0;
+}
+
+.btn-submit {
+  margin-top: 0.5rem;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-submit:hover {
+  background: #555;
+}
+
+.btn-submit:active {
+  transform: scale(0.99);
 }
