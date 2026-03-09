@@ -1,0 +1,76 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 220px;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar-brand {
+  padding: 1.25rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.admin-sidebar-brand:hover {
+  color: #ddd;
+}
+
+.admin-nav {
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.admin-nav-link {
+  display: block;
+  padding: 0.6rem 1.5rem;
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.admin-nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-sidebar-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-user {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.admin-logout {
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.admin-logout:hover {
+  color: #fff;
+}
+
+.admin-main {
+  flex: 1;
+  background: #f8f9fa;
+  padding: 1.5rem 2rem;
+  overflow-auto;
+}

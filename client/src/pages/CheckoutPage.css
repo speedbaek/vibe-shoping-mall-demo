@@ -1,0 +1,128 @@
+.checkout-page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.checkout-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-loading,
+.checkout-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.checkout-empty p {
+  margin-bottom: 1rem;
+}
+
+.checkout-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.checkout-btn-primary {
+  background: #1a1a1a;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.checkout-btn-primary:hover:not(:disabled) {
+  background: #333;
+}
+
+.checkout-btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.checkout-btn-outline {
+  background: transparent;
+  color: #333;
+  border: 1px solid #ddd;
+  width: 100%;
+}
+
+.checkout-btn-outline:hover {
+  border-color: #999;
+}
+
+.checkout-content {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.checkout-summary h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.checkout-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.checkout-item-name {
+  flex: 1;
+  color: #333;
+}
+
+.checkout-item-qty {
+  color: #666;
+}
+
+.checkout-item-price {
+  font-weight: 600;
+}
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-total strong {
+  font-size: 1.25rem;
+}
+
+.checkout-actions {
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.checkout-error {
+  font-size: 0.9rem;
+  color: #c00;
+  margin-bottom: 0.75rem;
+}

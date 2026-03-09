@@ -36,6 +36,16 @@ async function authenticate(req, res, next) {
 }
 
 /**
+ * authenticate 후 어드민 권한 확인
+ */
+function requireAdmin(req, res, next) {
+  if (req.user?.userType !== 'admin') {
+    return res.status(403).json({ message: '관리자 권한이 필요합니다.' });
+  }
+  next();
+}
+
+/**
  * 토큰이 있으면 req.user 설정, 없으면 통과 (선택 인증)
  */
 async function optionalAuth(req, res, next) {
@@ -56,4 +66,4 @@ async function optionalAuth(req, res, next) {
   }
 }
 
-module.exports = { authenticate, optionalAuth };
+module.exports = { authenticate, requireAdmin, optionalAuth };

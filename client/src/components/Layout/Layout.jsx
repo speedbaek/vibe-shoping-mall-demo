@@ -1,12 +1,11 @@
 import { Outlet } from 'react-router-dom';
+import Navbar from '../Navbar';
 
 function Layout() {
   return (
-    <div>
-      <header>
-        <h1>Vibe Shopping Mall</h1>
-      </header>
-      <main>
+    <div className="layout">
+      <Navbar />
+      <main className="layout-main">
         <Outlet />
       </main>
     </div>

@@ -61,3 +61,163 @@ export async function login({ email, password }) {
 export async function getMe() {
   return fetchApi('/auth/me');
 }
+
+/**
+ * 이미지 업로드 (FormData) - 어드민 전용
+ * @param {File} file
+ * @returns {Promise<{ url: string }>}
+ */
+export async function uploadImage(file) {
+  const token = typeof window !== 'undefined' && (window.__getAuthToken?.() ?? null);
+  const formData = new FormData();
+  formData.append('image', file);
+  const res = await fetch(`${import.meta.env.VITE_API_BASE_URL ?? '/api'}/upload`, {
+    method: 'POST',
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    body: formData,
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    const message = (() => {
+      try {
+        return JSON.parse(text).message;
+      } catch {
+        return text || res.statusText;
+      }
+    })();
+    throw new Error(message);
+  }
+  return res.json();
+}
+
+/* 상품 API */
+export async function getProducts(params) {
+  const qs = params
+    ? '?' + new URLSearchParams(
+        Object.entries(params).filter(([, v]) => v != null)
+      ).toString()
+    : '';
+  return fetchApi(`/products${qs}`);
+}
+
+export async function getProduct(id) {
+  return fetchApi(`/products/${id}`);
+}
+
+export async function createProduct(data) {
+  return fetchApi('/products', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updateProduct(id, data) {
+  return fetchApi(`/products/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function deleteProduct(id) {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_BASE_URL ?? '/api'}/products/${id}`,
+    {
+      method: 'DELETE',
+      headers: window.__getAuthToken?.()
+        ? { Authorization: `Bearer ${window.__getAuthToken()}` }
+        : {},
+    }
+  );
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    const message = (() => {
+      try {
+        return JSON.parse(text).message;
+      } catch {
+        return text || res.statusText;
+      }
+    })();
+    throw new Error(message);
+  }
+}
+
+/* 카테고리 API */
+export async function getCategories() {
+  return fetchApi('/categories');
+}
+
+export async function getCategory(id) {
+  return fetchApi(`/categories/${id}`);
+}
+
+export async function createCategory(data) {
+  return fetchApi('/categories', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updateCategory(id, data) {
+  return fetchApi(`/categories/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+/* 장바구니 API */
+export async function getCart() {
+  return fetchApi('/cart');
+}
+
+export async function addCartItem(productId, quantity = 1) {
+  return fetchApi('/cart/items', {
+    method: 'POST',
+    body: JSON.stringify({ productId, quantity }),
+  });
+}
+
+export async function updateCartItem(productId, quantity) {
+  return fetchApi(`/cart/items/${productId}`, {
+    method: 'PUT',
+    body: JSON.stringify({ quantity }),
+  });
+}
+
+export async function removeCartItem(productId) {
+  return fetchApi(`/cart/items/${productId}`, { method: 'DELETE' });
+}
+
+export async function clearCart() {
+  return fetchApi('/cart', { method: 'DELETE' });
+}
+
+/* 주문 API */
+export async function createOrder(productIds) {
+  return fetchApi('/orders', {
+    method: 'POST',
+    body: JSON.stringify(productIds ? { productIds } : {}),
+  });
+}
+
+export async function deleteCategory(id) {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_BASE_URL ?? '/api'}/categories/${id}`,
+    {
+      method: 'DELETE',
+      headers: window.__getAuthToken?.()
+        ? { Authorization: `Bearer ${window.__getAuthToken()}` }
+        : {},
+    }
+  );
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    const message = (() => {
+      try {
+        return JSON.parse(text).message;
+      } catch {
+        return text || res.statusText;
+      }
+    })();
+    throw new Error(message);
+  }
+}

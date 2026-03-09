@@ -21,7 +21,15 @@ async function login(req, res) {
       return res.status(401).json({ message: '이메일 또는 비밀번호가 올바르지 않습니다.' });
     }
 
-    const isMatch = await user.comparePassword(password);
+    let isMatch = false;
+    try {
+      isMatch = await user.comparePassword(password);
+    } catch (compareErr) {
+      console.error('[POST /api/auth/login] bcrypt compare error:', compareErr.message);
+      return res.status(500).json({
+        message: '비밀번호 검증 중 오류가 발생했습니다. DB에서 비밀번호가 평문으로 저장되었을 수 있습니다. 회원가입으로 새 계정을 만들거나, 해당 계정을 MongoDB에서 삭제 후 다시 회원가입 해주세요.',
+      });
+    }
     if (!isMatch) {
       return res.status(401).json({ message: '이메일 또는 비밀번호가 올바르지 않습니다.' });
     }
@@ -35,8 +43,12 @@ async function login(req, res) {
     const userObj = user.toJSON();
     res.json({ token, user: userObj });
   } catch (err) {
-    console.error('[POST /api/auth/login]', err);
-    res.status(500).json({ message: '로그인 처리 중 오류가 발생했습니다.' });
+    console.error('[POST /api/auth/login]', err.message, err);
+    res.status(500).json({
+      message: process.env.NODE_ENV === 'production'
+        ? '로그인 처리 중 오류가 발생했습니다.'
+        : `로그인 오류: ${err.message}`,
+    });
   }
 }
 

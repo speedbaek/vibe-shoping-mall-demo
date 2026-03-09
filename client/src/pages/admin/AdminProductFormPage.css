@@ -1,0 +1,154 @@
+.admin-form-page {
+  max-width: 560px;
+}
+
+.admin-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.admin-form-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.admin-form {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.admin-form-group {
+  margin-bottom: 1.25rem;
+}
+
+.admin-form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+
+.admin-form-group input,
+.admin-form-group textarea,
+.admin-form-group select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.admin-form-group select {
+  cursor: pointer;
+  background: #fff;
+}
+
+.admin-form-group input:focus,
+.admin-form-group textarea:focus,
+.admin-form-group select:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+.admin-form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.admin-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.admin-image-upload {
+  margin-top: 0.25rem;
+}
+
+.admin-image-drop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #666;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.admin-image-drop:hover {
+  border-color: #999;
+}
+
+.admin-image-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-image-preview {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.admin-image-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-form-hint {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.35rem;
+}
+
+.admin-icon-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-icon-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.admin-icon-btn:hover,
+.admin-icon-btn.active {
+  border-color: #1a1a1a;
+}
+
+.admin-icon-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
