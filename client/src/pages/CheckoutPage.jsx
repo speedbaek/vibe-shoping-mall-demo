@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { createOrder, getImageUrl } from '../utils/api';
+
+const CHECKOUT_PENDING_KEY = 'checkout_pending';
 import './CheckoutPage.css';
 
 const PORTONE_STORE_ID = 'imp67137525';
@@ -165,6 +167,16 @@ function CheckoutPage() {
       ? items[0].product?.name ?? '주문'
       : `${items[0]?.product?.name ?? '상품'} 외 ${items.length - 1}건`;
 
+    // 모바일 redirect 시 콜백이 실행되지 않으므로, success 페이지에서 사용할 데이터 저장
+    try {
+      sessionStorage.setItem(CHECKOUT_PENDING_KEY, JSON.stringify({
+        form: { ...form },
+        selectedProductIds: Array.isArray(selectedProductIds) ? selectedProductIds : null,
+        discountAmount,
+        merchantUid,
+      }));
+    } catch (_) {}
+
     window.IMP.request_pay(
       {
         pg: PORTONE_PG,
@@ -196,6 +208,7 @@ function CheckoutPage() {
               pgOrderId: rsp.merchant_uid,
               pgTransactionId: rsp.imp_uid,
             });
+            try { sessionStorage.removeItem(CHECKOUT_PENDING_KEY); } catch (_) {}
             await refreshCart();
             navigate(`/checkout/success/${order._id}`, {
               replace: true,

@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { getOrder, getImageUrl } from '../utils/api';
+import { useCart } from '../context/CartContext';
+import { getOrder, createOrder, getImageUrl } from '../utils/api';
 import './CheckoutSuccessPage.css';
+
+const CHECKOUT_PENDING_KEY = 'checkout_pending';
 
 const PAYMENT_LABELS = {
   card: '신용/체크카드',
@@ -15,21 +18,78 @@ const PAYMENT_LABELS = {
 
 function CheckoutSuccessPage() {
   const { orderId } = useParams();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const { user } = useAuth();
+  const { refreshCart } = useCart();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  // 모바일 결제 redirect 처리 (imp_uid, merchant_uid, imp_success가 URL에 있음)
   useEffect(() => {
+    const impSuccess = searchParams.get('imp_success');
+    const impUid = searchParams.get('imp_uid');
+    const merchantUid = searchParams.get('merchant_uid');
+
+    if (impSuccess === 'false') {
+      setError('결제가 실패하거나 취소되었습니다.');
+      setLoading(false);
+      return;
+    }
+
+    if (impSuccess === 'true' && impUid && merchantUid && !orderId) {
+      let pending = null;
+      try {
+        const raw = sessionStorage.getItem(CHECKOUT_PENDING_KEY);
+        if (raw) pending = JSON.parse(raw);
+      } catch (_) {}
+
+      if (!pending || pending.merchantUid !== merchantUid) {
+        setError('세션이 만료되었거나 결제 정보를 찾을 수 없습니다.');
+        setLoading(false);
+        return;
+      }
+
+      const { form, selectedProductIds, discountAmount } = pending;
+
+      (async () => {
+        try {
+          const newOrder = await createOrder({
+            productIds: selectedProductIds,
+            paymentMethod: form.paymentMethod,
+            buyerName: form.buyerName?.trim(),
+            buyerEmail: form.buyerEmail?.trim(),
+            buyerContact: form.buyerContact?.trim(),
+            buyerAddress: form.buyerAddress?.trim() || undefined,
+            memo: form.memo?.trim() || undefined,
+            couponCode: form.couponCode?.trim() || undefined,
+            discountAmount: discountAmount || 0,
+            pgProvider: 'portone',
+            pgOrderId: merchantUid,
+            pgTransactionId: impUid,
+          });
+          try { sessionStorage.removeItem(CHECKOUT_PENDING_KEY); } catch (_) {}
+          await refreshCart();
+          navigate(`/checkout/success/${newOrder._id}`, { replace: true });
+        } catch (err) {
+          setError(err.message || '주문 처리에 실패했습니다.');
+          setLoading(false);
+        }
+      })();
+      return;
+    }
+
     if (!orderId || !user) {
       setLoading(false);
       return;
     }
+
     getOrder(orderId)
       .then(setOrder)
       .catch((err) => setError(err.message || '주문 정보를 불러오지 못했습니다.'))
       .finally(() => setLoading(false));
-  }, [orderId, user]);
+  }, [orderId, user, searchParams, navigate, refreshCart]);
 
   if (!user) {
     return (
