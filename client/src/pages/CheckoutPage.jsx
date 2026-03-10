@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { createOrder } from '../utils/api';
+import { createOrder, getImageUrl } from '../utils/api';
 import './CheckoutPage.css';
 
 const PORTONE_STORE_ID = 'imp67137525';
@@ -246,7 +246,7 @@ function CheckoutPage() {
                   <li key={p._id} className="checkout-product-item">
                     <Link to={`/products/${p._id}`} className="checkout-product-thumb">
                       {p.imageUrl ? (
-                        <img src={p.imageUrl} alt={p.name} />
+                        <img src={getImageUrl(p.imageUrl)} alt={p.name} />
                       ) : (
                         <span className="checkout-product-placeholder">이미지</span>
                       )}

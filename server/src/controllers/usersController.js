@@ -8,7 +8,7 @@ function handleError(err, res) {
     return res.status(500).json({ message: '서버 오류가 발생했습니다.' });
   }
   if (err.code === 11000) {
-    return res.status(409).json({ message: '이미 사용 중인 이메일입니다.' });
+    return res.status(409).json({ message: '중복된 이메일입니다. 다른 이메일로 시도해 주세요.' });
   }
   if (err.name === 'ValidationError') {
     const message = Object.values(err.errors || {})

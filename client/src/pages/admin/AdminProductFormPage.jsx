@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { getProduct, createProduct, updateProduct, uploadImage, getCategories } from '../../utils/api';
+import { getProduct, createProduct, updateProduct, uploadImage, getCategories, getImageUrl } from '../../utils/api';
 import './AdminProductFormPage.css';
 
 function AdminProductFormPage() {
@@ -222,7 +222,7 @@ function AdminProductFormPage() {
           <div className="admin-image-upload">
             {form.imageUrl ? (
               <div className="admin-image-preview-wrap">
-                <img src={form.imageUrl} alt="미리보기" className="admin-image-preview" />
+                <img src={getImageUrl(form.imageUrl)} alt="미리보기" className="admin-image-preview" />
                 <div className="admin-image-actions">
                   <label className="admin-btn admin-btn-sm admin-btn-outline">
                     변경

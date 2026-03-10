@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { getImageUrl } from '../utils/api';
 import { useCart } from '../context/CartContext';
 import './CartPage.css';
 
@@ -128,7 +129,7 @@ function CartPage() {
                 </label>
                 <Link to={`/products/${p._id}`} className="cart-item-image">
                   {p.imageUrl ? (
-                    <img src={p.imageUrl} alt={p.name} />
+                    <img src={getImageUrl(p.imageUrl)} alt={p.name} />
                   ) : (
                     <span>이미지 없음</span>
                   )}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { getOrder } from '../utils/api';
+import { getOrder, getImageUrl } from '../utils/api';
 import './CheckoutSuccessPage.css';
 
 const PAYMENT_LABELS = {
@@ -142,7 +142,7 @@ function CheckoutSuccessPage() {
                 className="order-complete-product-thumb"
               >
                 {item.product?.imageUrl ? (
-                  <img src={item.product.imageUrl} alt={item.name} />
+                  <img src={getImageUrl(item.product.imageUrl)} alt={item.name} />
                 ) : (
                   <span>이미지</span>
                 )}

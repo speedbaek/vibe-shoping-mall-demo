@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getOrder, updateOrder } from '../../utils/api';
+import { getOrder, updateOrder, getImageUrl } from '../../utils/api';
 import './AdminOrderDetailPage.css';
 
 const STATUS_OPTIONS = [
@@ -157,7 +157,7 @@ function AdminOrderDetailPage() {
               <li key={idx} className="admin-order-item">
                 {item.product?.imageUrl ? (
                   <img
-                    src={item.product.imageUrl}
+                    src={getImageUrl(item.product.imageUrl)}
                     alt={item.name}
                     className="admin-order-item-img"
                   />

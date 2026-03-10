@@ -1,5 +1,18 @@
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '/api';
 
+/**
+ * 이미지 URL을 절대 경로로 변환 (배포 시 프론트/백엔드 도메인 다를 때 필요)
+ * @param {string} url - 상대 경로(/api/uploads/xxx) 또는 절대 URL
+ * @returns {string}
+ */
+export function getImageUrl(url) {
+  if (!url) return url;
+  if (url.startsWith('http')) return url;
+  const base = import.meta.env.VITE_API_BASE_URL ?? '/api';
+  const origin = base.replace(/\/api\/?$/, '') || '';
+  return origin ? `${origin}${url.startsWith('/') ? url : '/' + url}` : url;
+}
+
 function getAuthHeaders() {
   const token = typeof window !== 'undefined' && (window.__getAuthToken?.() ?? null);
   const headers = { 'Content-Type': 'application/json' };
@@ -87,7 +100,12 @@ export async function uploadImage(file) {
     })();
     throw new Error(message);
   }
-  return res.json();
+  const data = await res.json();
+  // 상대 URL이면 절대 URL로 변환해 반환 (배포 환경에서 이미지 표시용)
+  if (data.url && data.url.startsWith('/')) {
+    data.url = getImageUrl(data.url);
+  }
+  return data;
 }
 
 /* 상품 API */

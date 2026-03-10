@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { getProduct } from '../utils/api';
+import { getProduct, getImageUrl } from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import './ProductDetailPage.css';
@@ -57,7 +57,7 @@ function ProductDetailPage() {
         <div className="product-detail-image-wrap">
           {product.imageUrl ? (
             <img
-              src={product.imageUrl}
+              src={getImageUrl(product.imageUrl)}
               alt={product.name}
               className="product-detail-image"
             />

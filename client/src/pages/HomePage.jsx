@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getProducts, getCategories } from '../utils/api';
+import { getProducts, getCategories, getImageUrl } from '../utils/api';
 import './HomePage.css';
 
 function HomePage() {
@@ -60,7 +60,7 @@ function HomePage() {
                 <Link key={product._id} to={`/products/${product._id}`} className="product-card">
                   <div className="product-image">
                     {product.imageUrl ? (
-                      <img src={product.imageUrl} alt={product.name} />
+                      <img src={getImageUrl(product.imageUrl)} alt={product.name} />
                     ) : (
                       <span className="product-placeholder">상품 이미지</span>
                     )}
