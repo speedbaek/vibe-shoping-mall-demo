@@ -14,8 +14,13 @@
   background-color: #fff;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {
