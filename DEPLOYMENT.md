@@ -103,8 +103,10 @@ mongodb+srv://admin:MyPassword123@cluster0.xxxxx.mongodb.net/vibe-shoping-mall?r
 | **Root Directory** | `client` |
 | **Framework Preset** | Vite |
 | **Build Command** | `npm run build` |
-| **Output Directory** | `dist` |
+| **Output Directory** | `dist` (⚠️ 반드시 확인) |
 | **Install Command** | `npm install` |
+
+> ⚠️ **404 발생 시**: Vercel 대시보드 → Project → Settings → General에서 **Output Directory**가 `dist`로 설정되어 있는지 확인하세요. 비어있거나 잘못된 경로면 404가 발생합니다.
 
 ### 4.3 환경 변수
 
