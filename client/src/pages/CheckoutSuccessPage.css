@@ -1,15 +1,19 @@
-.checkout-success {
-  max-width: 400px;
-  margin: 4rem auto;
-  padding: 2rem;
-  text-align: center;
+.order-complete {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
 }
 
-.checkout-success-icon {
-  width: 4rem;
-  height: 4rem;
-  margin: 0 auto 1rem;
-  font-size: 2rem;
+.order-complete-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.order-complete-icon {
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto 1.25rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
   background: #22c55e;
@@ -19,30 +23,216 @@
   justify-content: center;
 }
 
-.checkout-success h1 {
-  font-size: 1.5rem;
+.order-complete-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem 0;
+}
+
+.order-complete-header h1 + .order-complete-sub {
+  line-height: 1.6;
+}
+
+.order-complete-sub {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+.order-complete-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.order-complete-card-title {
+  font-size: 1rem;
   font-weight: 600;
   color: #1a1a1a;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.checkout-success p {
+.order-complete-dl {
+  margin: 0;
+}
+
+.order-complete-dl > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.order-complete-dl dt {
+  margin: 0;
   color: #666;
-  margin-bottom: 1.5rem;
+  flex: 0 0 100px;
 }
 
-.checkout-success-btn {
+.order-complete-dl dd {
+  margin: 0;
+  color: #1a1a1a;
+  font-weight: 500;
+  text-align: right;
+}
+
+.order-complete-amount {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.order-complete-product-list {
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+.order-complete-product-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.order-complete-product-item:last-of-type {
+  border-bottom: none;
+}
+
+.order-complete-product-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-complete-product-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-complete-product-thumb span {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.order-complete-product-info {
+  min-width: 0;
+}
+
+.order-complete-product-name {
+  display: block;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.order-complete-product-name:hover {
+  text-decoration: underline;
+}
+
+.order-complete-product-meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.order-complete-product-total {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.order-complete-discount {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #16a34a;
+}
+
+.order-complete-total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0 0;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.order-complete-total-row strong {
+  font-size: 1.2rem;
+}
+
+.order-complete-actions {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.order-complete-actions-stack {
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.order-complete-btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
-  color: #fff;
-  background: #1a1a1a;
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.2s;
+  width: 100%;
+  text-align: center;
 }
 
-.checkout-success-btn:hover {
-  background: #333;
+.order-complete-btn-primary {
+  background: #22c55e;
+  color: #fff;
+}
+
+.order-complete-btn-primary:hover {
+  background: #16a34a;
+}
+
+.order-complete-btn-outline {
+  background: transparent;
+  color: #333;
+  border: 2px solid #ddd;
+}
+
+.order-complete-btn-outline:hover {
+  border-color: #999;
+  background: #f5f5f5;
+}
+
+.order-complete-header-simple {
+  margin-bottom: 2rem;
+}
+
+.order-complete-empty,
+.order-complete-loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.order-complete-empty p {
+  margin-bottom: 1.5rem;
 }

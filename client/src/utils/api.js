@@ -192,11 +192,74 @@ export async function clearCart() {
 }
 
 /* 주문 API */
-export async function createOrder(productIds) {
+/**
+ * @param {Object} payload
+ * @param {string[]} [payload.productIds] - 결제할 상품 ID 목록 (없으면 전체)
+ * @param {string} [payload.paymentMethod] - card, bank, kakao, naver, toss, virtual
+ * @param {string} [payload.buyerName]
+ * @param {string} [payload.buyerEmail]
+ * @param {string} [payload.buyerContact]
+ * @param {string} [payload.buyerAddress]
+ * @param {string} [payload.couponCode]
+ * @param {number} [payload.discountAmount]
+ * @param {string} [payload.memo]
+ */
+export async function createOrder(payload = {}) {
   return fetchApi('/orders', {
     method: 'POST',
-    body: JSON.stringify(productIds ? { productIds } : {}),
+    body: JSON.stringify(payload),
   });
+}
+
+export async function getOrders(params) {
+  const qs = params
+    ? '?' + new URLSearchParams(
+        Object.entries(params).filter(([, v]) => v != null)
+      ).toString()
+    : '';
+  return fetchApi(`/orders${qs}`);
+}
+
+export async function getOrdersAdmin(params) {
+  const qs = params
+    ? '?' + new URLSearchParams(
+        Object.entries(params).filter(([, v]) => v != null)
+      ).toString()
+    : '';
+  return fetchApi(`/orders/admin/all${qs}`);
+}
+
+export async function getOrder(id) {
+  return fetchApi(`/orders/${id}`);
+}
+
+export async function updateOrder(id, data) {
+  return fetchApi(`/orders/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+export async function cancelOrder(id, hard = false) {
+  const qs = hard ? '?hard=true' : '';
+  const res = await fetch(
+    `${API_BASE}/orders/${id}${qs}`,
+    {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    }
+  );
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    const message = (() => {
+      try {
+        return JSON.parse(text).message;
+      } catch {
+        return text || res.statusText;
+      }
+    })();
+    throw new Error(message);
+  }
 }
 
 export async function deleteCategory(id) {

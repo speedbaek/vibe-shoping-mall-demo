@@ -1,0 +1,189 @@
+.mypage {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.mypage-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 2rem 0;
+}
+
+.mypage-section {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.mypage-section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.mypage-info p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.mypage-email {
+  color: #666 !important;
+}
+
+.mypage-quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.mypage-link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.mypage-link-card:hover {
+  background: #eee;
+}
+
+.mypage-link-icon {
+  font-size: 1.75rem;
+}
+
+.mypage-link-card em {
+  font-style: normal;
+  color: #666;
+  font-weight: 400;
+}
+
+.mypage-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mypage-section-header h2 {
+  margin: 0;
+}
+
+.mypage-more {
+  font-size: 0.9rem;
+  color: #666;
+  text-decoration: none;
+}
+
+.mypage-more:hover {
+  color: #1a1a1a;
+}
+
+.mypage-empty-orders {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.mypage-order-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mypage-order-list li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mypage-order-list li:last-child {
+  border-bottom: none;
+}
+
+.mypage-order-item {
+  display: block;
+  padding: 1rem 0;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: background 0.2s;
+}
+
+.mypage-order-item:hover {
+  background: #fafafa;
+}
+
+.mypage-order-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.mypage-order-no {
+  font-weight: 600;
+}
+
+.mypage-order-status {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: #f0f0f0;
+  color: #555;
+}
+
+.mypage-order-products {
+  display: block;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 0.35rem;
+}
+
+.mypage-order-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.mypage-order-date {
+  color: #666;
+}
+
+.mypage-order-amount {
+  font-weight: 600;
+}
+
+.mypage-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.mypage-empty p {
+  margin-bottom: 1.5rem;
+}
+
+.mypage-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  background: #1a1a1a;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.mypage-btn:hover {
+  background: #333;
+}
+

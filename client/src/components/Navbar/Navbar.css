@@ -75,6 +75,11 @@
   font-size: 0.9rem;
   color: #555;
   margin-right: 0.25rem;
+  text-decoration: none;
+}
+
+.navbar-user:hover {
+  color: #1a1a1a;
 }
 
 .navbar-loading {

@@ -12,9 +12,13 @@ import AdminProductsPage from './pages/admin/AdminProductsPage';
 import AdminProductFormPage from './pages/admin/AdminProductFormPage';
 import AdminCategoriesPage from './pages/admin/AdminCategoriesPage';
 import AdminCategoryFormPage from './pages/admin/AdminCategoryFormPage';
+import AdminOrdersPage from './pages/admin/AdminOrdersPage';
+import AdminOrderDetailPage from './pages/admin/AdminOrderDetailPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import CheckoutSuccessPage from './pages/CheckoutSuccessPage';
+import MyPage from './pages/MyPage';
+import OrderHistoryPage from './pages/OrderHistoryPage';
 import './App.css';
 
 function App() {
@@ -28,7 +32,10 @@ function App() {
             <Route path="/products/:id" element={<ProductDetailPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/checkout/success/:orderId" element={<CheckoutSuccessPage />} />
             <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
+            <Route path="/my" element={<MyPage />} />
+            <Route path="/my/orders" element={<OrderHistoryPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
           </Route>
@@ -46,6 +53,8 @@ function App() {
             <Route path="products/:id/edit" element={<AdminProductFormPage />} />
             <Route path="categories" element={<AdminCategoriesPage />} />
             <Route path="categories/new" element={<AdminCategoryFormPage />} />
+            <Route path="orders" element={<AdminOrdersPage />} />
+            <Route path="orders/:orderId" element={<AdminOrderDetailPage />} />
             <Route path="categories/:id/edit" element={<AdminCategoryFormPage />} />
           </Route>
         </Routes>

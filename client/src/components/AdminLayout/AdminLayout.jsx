@@ -27,6 +27,9 @@ function AdminLayout() {
           <Link to="/admin/categories" className="admin-nav-link">
             카테고리 관리
           </Link>
+          <Link to="/admin/orders" className="admin-nav-link">
+            주문 관리
+          </Link>
         </nav>
         <div className="admin-sidebar-footer">
           <span className="admin-user">{user?.name}님</span>

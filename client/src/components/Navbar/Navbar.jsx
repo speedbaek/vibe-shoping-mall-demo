@@ -19,7 +19,9 @@ function Navbar() {
             <span className="navbar-loading">로딩 중...</span>
           ) : user ? (
             <>
-              <span className="navbar-user">안녕하세요, {user.name}님</span>
+              <Link to="/my" className="navbar-user">
+                안녕하세요, {user.name}님
+              </Link>
               {user.userType === 'admin' && (
                 <Link to="/admin/products" className="navbar-btn navbar-btn-outline">
                   관리자
