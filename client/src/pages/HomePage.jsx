@@ -23,9 +23,6 @@ function HomePage() {
         <div className="hero-inner">
           <h1 className="hero-title">Vibe AI Academy</h1>
           <p className="hero-desc">AI 강의 · AI 컨설팅으로 비즈니스 성장을 이끌어 드립니다</p>
-          <Link to="/" className="hero-cta">
-            둘러보기
-          </Link>
         </div>
       </section>
 
